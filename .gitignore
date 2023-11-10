@@ -80,7 +80,7 @@ crashlytics-build.properties
 # Binary cache
 [Pp]ackages/[Cc]ache/
 
-# Above directories with 
+# Above directories with / omitted
 [Ll]ibrary
 [Tt]emp
 [Oo]bj
@@ -91,3 +91,6 @@ crashlytics-build.properties
 [Mm]emoryCaptures
 [Rr]ecordings
 [Aa]ssets/Plugins/Editor/JetBrains*
+
+#
+*/.idea/
