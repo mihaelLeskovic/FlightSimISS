@@ -36,6 +36,8 @@ public class PlaneController : MonoBehaviour {
 
     private Rigidbody rb;
 
+    AudioSource engineSound;
+
     private float responseModifier {
         get {
             return (rb.mass / 10f) * responsiveness;
@@ -44,6 +46,7 @@ public class PlaneController : MonoBehaviour {
 
     private void Awake() {
         rb = GetComponent<Rigidbody>();
+        engineSound = GetComponent<AudioSource>();
     }
 
     private void HandleInputs() {
@@ -59,6 +62,7 @@ public class PlaneController : MonoBehaviour {
 
     private void Update() {
         HandleInputs();
+        engineSound.volume = throttle * throttle * 0.00005f ;
     }
 
     private void FixedUpdate() {
