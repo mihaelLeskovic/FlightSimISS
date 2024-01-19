@@ -5,17 +5,8 @@ using UnityEngine;
 
 public class RocketLauncher : MonoBehaviour
 {
-
     public List<GameObject> targets;
-
     public string targetTag = "target";
-
-    private void Start()
-    {
-        // Find all GameObjects with the specified tag and add them to the list
-        GameObject[] targetArray = GameObject.FindGameObjectsWithTag(targetTag);
-        targets.AddRange(targetArray);
-    }
 
     public GameObject rocketPrefab;
     public GameObject rafale;
@@ -26,36 +17,55 @@ public class RocketLauncher : MonoBehaviour
     public AudioClip explosionSound;
     public AudioClip blastSound;
 
+    public GameObject customSmokePrefab; // Add this variable for your custom smoke effect
 
+    private void Start()
+    {
+        // Find all GameObjects with the specified tag and add them to the list
+        GameObject[] targetArray = GameObject.FindGameObjectsWithTag(targetTag);
+        targets.AddRange(targetArray);
+    }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Collider[] hitColliders = Physics.OverlapBox(rafale.transform.position + rafale.transform.forward * 100, Vector3.one * 200, rafale.transform.rotation);
-            //transform.localScale / 2, Quaternion.identity);
-            //RaycastHit hit;
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            // Find the closest target in the camera view
+            GameObject closestTarget = GetClosestTargetInCameraView();
 
-            //if (Physics.Raycast(ray, out hit))
-            //{
-            //    GameObject targetHit = hit.collider.gameObject;
-            //    // Check if targets list is not null and contains the targetHit
-            //    if (targets != null && targets.Count > 0 && targets.Contains(targetHit))
-            //    {
-            if (hitColliders.Length > 0)
+            if (closestTarget != null)
             {
-                var minDist = float.MaxValue;
-                GameObject target = null;
-                foreach (Collider collider in hitColliders)
+                LaunchRocket(closestTarget);
+            }
+        }
+    }
+
+    private GameObject GetClosestTargetInCameraView()
+    {
+        GameObject closestTarget = null;
+        float closestDistance = Mathf.Infinity;
+
+        // Get the camera position and forward direction
+        Vector3 cameraPosition = Camera.main.transform.position;
+        Vector3 cameraForward = Camera.main.transform.forward;
+
+        foreach (GameObject target in targets)
+        {
+            if (target != null)
+            {
+                // Check if the target is in the camera view
+                Vector3 toTarget = target.transform.position - cameraPosition;
+                float angle = Vector3.Angle(cameraForward, toTarget);
+
+                if (angle < Camera.main.fieldOfView * 0.5f)
                 {
-                    if (targets.Contains(collider.gameObject))
+                    // Check if the target is closer than the current closest target
+                    float distance = Vector3.Distance(cameraPosition, target.transform.position);
+
+                    if (distance < closestDistance)
                     {
-                        if (Vector3.Distance(rafale.transform.position, collider.transform.position) < minDist)
-                        {
-                            minDist = Vector3.Distance(rafale.transform.position, collider.transform.position);
-                            target = collider.gameObject;
-                        }
+                        closestTarget = target;
+                        closestDistance = distance;
                     }
                 }
                 if (target != null)
@@ -66,6 +76,8 @@ public class RocketLauncher : MonoBehaviour
             //    }
             //}
         }
+
+        return closestTarget;
     }
 
     private void LaunchRocket(GameObject target)
@@ -82,8 +94,10 @@ public class RocketLauncher : MonoBehaviour
         }
     }
 
-    public IEnumerator SendHoming(GameObject rocket, GameObject smokeTrail, GameObject target)
+    private IEnumerator SendHoming(GameObject rocket, GameObject smokeTrail, GameObject target)
     {
+        Rigidbody targetRigidbody = target.GetComponent<Rigidbody>();
+
         while (Vector3.Distance(target.transform.position, rocket.transform.position) > 0.3f)
         {
             rocket.transform.position += (target.transform.position - rocket.transform.position).normalized * speed * Time.deltaTime;
@@ -104,14 +118,45 @@ public class RocketLauncher : MonoBehaviour
         {
             // The rocket hit the target, trigger explosion
             TriggerExplosion(rocket.transform.position);
+
+            // Make the target smoke and fall to the ground with custom smoke effect
+            StartSmokingAndFalling(target, smokeTrail);
         }
 
         // Destroy the rocket and smoke trail whether it hit the target or not
         Destroy(rocket);
         Destroy(smokeTrail);
+    }
 
-        // Delay for 1 second
-        yield return new WaitForSeconds(1f);
+    private void StartSmokingAndFalling(GameObject target, GameObject smokeTrail)
+    {
+        // Attach your custom smoke particle system to the target
+        GameObject customSmoke = Instantiate(customSmokePrefab, target.transform.position, Quaternion.identity);
+        customSmoke.transform.parent = target.transform; // Set the target as the parent to follow its position
+
+        // Add a Rigidbody component to enable falling
+        Rigidbody targetRigidbody = target.AddComponent<Rigidbody>();
+        targetRigidbody.useGravity = true;
+
+        // Optionally, you may need to adjust other Rigidbody settings for realistic falling
+        // targetRigidbody.drag = 0.5f;
+        // targetRigidbody.angularDrag = 0.5f;
+        // ...
+
+        // Destroy the smoke trail as it's no longer needed
+        Destroy(smokeTrail);
+
+        // Delay for some time before destroying the target
+        StartCoroutine(DestroyTargetDelayed(target, customSmoke));
+    }
+
+    private IEnumerator DestroyTargetDelayed(GameObject target, GameObject customSmoke)
+    {
+        // Adjust the delay time as needed
+        yield return new WaitForSeconds(2f);
+
+        // Stop the custom smoke particle system before destroying the target
+        customSmoke.GetComponent<ParticleSystem>().Stop();
 
         // Destroy the target
         Destroy(target);
