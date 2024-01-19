@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5097242438411774917}
   - component: {fileID: 5903613396396784748}
   - component: {fileID: 6463697484464076845}
-  - component: {fileID: 1047933658722552701}
   - component: {fileID: 5262137156286932897}
   m_Layer: 0
   m_Name: rearviewCamera
@@ -94,24 +93,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116938549841396616}
   m_Enabled: 0
---- !u!114 &1047933658722552701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116938549841396616}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470f03a3294c7fa4f863979c6f51aeea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  povs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 0
 --- !u!114 &5262137156286932897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,7 +728,6 @@ GameObject:
   - component: {fileID: 3023622977916685458}
   - component: {fileID: 6998014628597331353}
   - component: {fileID: 6908577818460909534}
-  - component: {fileID: 4187182537330249138}
   - component: {fileID: 8681291005141735766}
   m_Layer: 0
   m_Name: thirdPersonCamera
@@ -830,24 +810,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7782802571500981669}
   m_Enabled: 0
---- !u!114 &4187182537330249138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7782802571500981669}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470f03a3294c7fa4f863979c6f51aeea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  povs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 0
 --- !u!114 &8681291005141735766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1232,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4884191868994151019}
+    - targetCorrespondingSourceObject: {fileID: 7033535359556318519, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1683193359064493055}
+    - targetCorrespondingSourceObject: {fileID: 7033535359556318519, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1868808645260242780}
+    - targetCorrespondingSourceObject: {fileID: -3605025363303047601, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8620497502310930460}
+    - targetCorrespondingSourceObject: {fileID: -3605025363303047601, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6538257248852744502}
   m_SourcePrefab: {fileID: 100100000, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
 --- !u!4 &539410875239563680 stripped
 Transform:
@@ -1302,3 +1276,97 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.642485, y: 1.6679806, z: 1.2331607}
   m_Center: {x: -1.2357504, y: 0.7828203, z: 0}
+--- !u!1 &5552523414462412804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3605025363303047601, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
+  m_PrefabInstance: {fileID: 69495904685418059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8620497502310930460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552523414462412804}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1333eda80e089224d9f595cf7b8a48f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  targetTag: target
+  rocketPrefab: {fileID: 5552523414462412804}
+  rafale: {fileID: 880330555476106010}
+  smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
+  speed: 100
+  explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
+  explosionSound: {fileID: 0}
+  blastSound: {fileID: 0}
+--- !u!65 &6538257248852744502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552523414462412804}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.22439481, y: 1.2562356, z: 0.22439486}
+  m_Center: {x: -8.995267e-15, y: -0.15824668, z: -0.000000834465}
+--- !u!1 &7019639628124558204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7033535359556318519, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
+  m_PrefabInstance: {fileID: 69495904685418059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1683193359064493055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019639628124558204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1333eda80e089224d9f595cf7b8a48f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  targetTag: target
+  rocketPrefab: {fileID: 7019639628124558204}
+  rafale: {fileID: 880330555476106010}
+  smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
+  speed: 100
+  explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
+  explosionSound: {fileID: 0}
+  blastSound: {fileID: 0}
+--- !u!65 &1868808645260242780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019639628124558204}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.22439481, y: 1.2562356, z: 0.22439486}
+  m_Center: {x: 8.995267e-15, y: -0.15824668, z: -0.000000834465}

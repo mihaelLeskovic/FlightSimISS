@@ -55,10 +55,10 @@ public class ScenarioSetup : MonoBehaviour
             
             if (Physics.Raycast(ray, out var hit, Mathf.Infinity, LayerMask.NameToLayer("UI")))
             {
-                Debug.Log("here");
+                //Debug.Log("here");
                 if (selectedIcon != null && hit.transform.gameObject == playableMapObject)
                 {
-                    Debug.Log("here");
+                    //Debug.Log("here");
                 }
             }
         }

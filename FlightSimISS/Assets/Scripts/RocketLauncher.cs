@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RocketLauncher : MonoBehaviour
@@ -31,19 +32,39 @@ public class RocketLauncher : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Collider[] hitColliders = Physics.OverlapBox(rafale.transform.position + rafale.transform.forward * 100, Vector3.one * 200, rafale.transform.rotation);
+            //transform.localScale / 2, Quaternion.identity);
+            //RaycastHit hit;
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit))
+            //if (Physics.Raycast(ray, out hit))
+            //{
+            //    GameObject targetHit = hit.collider.gameObject;
+            //    // Check if targets list is not null and contains the targetHit
+            //    if (targets != null && targets.Count > 0 && targets.Contains(targetHit))
+            //    {
+            if (hitColliders.Length > 0)
             {
-                GameObject targetHit = hit.collider.gameObject;
-
-                // Check if targets list is not null and contains the targetHit
-                if (targets != null && targets.Count > 0 && targets.Contains(targetHit))
+                var minDist = float.MaxValue;
+                GameObject target = null;
+                foreach (Collider collider in hitColliders)
                 {
-                    LaunchRocket(targetHit);
+                    if (targets.Contains(collider.gameObject))
+                    {
+                        if (Vector3.Distance(rafale.transform.position, collider.transform.position) < minDist)
+                        {
+                            minDist = Vector3.Distance(rafale.transform.position, collider.transform.position);
+                            target = collider.gameObject;
+                        }
+                    }
                 }
+                if (target != null)
+                {
+                    LaunchRocket(target);
+                }            
             }
+            //    }
+            //}
         }
     }
 
