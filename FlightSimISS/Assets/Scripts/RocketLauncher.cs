@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RocketLauncher : MonoBehaviour
@@ -68,13 +67,7 @@ public class RocketLauncher : MonoBehaviour
                         closestDistance = distance;
                     }
                 }
-                if (target != null)
-                {
-                    LaunchRocket(target);
-                }            
             }
-            //    }
-            //}
         }
 
         return closestTarget;
