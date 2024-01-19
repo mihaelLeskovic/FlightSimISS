@@ -1,11 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TerrainGen : MonoBehaviour
 {
+    public void Setup(int tileCount, float scale, int resolution, int noiseIntensity, float noiseScale)
+    {
+        this.tileCount = tileCount;
+        this.scale = scale;
+        this.resolution = resolution;
+        this.noiseIntensity = noiseIntensity;
+        this.noiseScale = noiseScale;
+    }
+
     [Serializable]
     public class TerrainType
     {
@@ -23,11 +31,15 @@ public class TerrainGen : MonoBehaviour
     [SerializeField] TerrainType[] terrainTypes;
 
     GameObject[,] terrainCache;
+    Mesh[,] meshCache;
+    MeshCollider[,] meshColliders;
     float[,] noiseMap;
 
     private void Start()
     {
         terrainCache = new GameObject[tileCount, tileCount];
+        meshCache = new Mesh[tileCount, tileCount];
+        meshColliders = new MeshCollider[tileCount, tileCount];
         for (int i = 0; i < tileCount; i++)
         {
             for (int j = 0; j < tileCount; j++)
@@ -36,9 +48,10 @@ public class TerrainGen : MonoBehaviour
                 terrainCache[i, j].transform.position = new Vector3(i * scale, 0, j * scale);
                 terrainCache[i, j].transform.parent = transform;
                 var meshFilter = terrainCache[i, j].AddComponent<MeshFilter>();
-                terrainCache[i, j].AddComponent<MeshCollider>();
+                meshColliders[i, j] = terrainCache[i, j].AddComponent<MeshCollider>();
                 var meshRenderer = terrainCache[i, j].AddComponent<MeshRenderer>();
                 meshFilter.mesh = GenerateMesh(scale, resolution);
+                meshCache[i, j] = meshFilter.mesh;
                 meshRenderer.material.shader = Shader.Find("Shader Graphs/TerrainShader");
                 //TODO setFloat TexTiling to shader
             }
@@ -51,15 +64,21 @@ public class TerrainGen : MonoBehaviour
         int tileWidth = (int)Mathf.Sqrt(vertices.Length);
         int width = depth;
 
-        noiseMap = GenerateNoiseMap(depth, width, scale);
+        noiseMap = GenerateNoiseMap(depth, width, noiseScale);
 
-        //TODO normalizirat krajnje vertexe
-
-        for (int i = 0; i < tileCount - 1; i++)
+        for (int i = 1; i < tileCount; i++)
         {
-            for (int j = 0; j < noiseMap.GetLength(1) - 1; j++)
+            for (int j = 0; j < noiseMap.GetLength(1); j++)
             {
-                noiseMap[i * tileDepth + 1, j + 1] = noiseMap[i * tileDepth, j];
+                noiseMap[i * tileDepth, j] = noiseMap[i * tileDepth - 1, j];
+            }
+        }
+
+        for (int i = 1; i < tileCount; i++)
+        {
+            for (int j = 0; j < noiseMap.GetLength(0); j++)
+            {
+                noiseMap[j, i * tileWidth] = noiseMap[j, i * tileWidth - 1];
             }
         }
 
@@ -70,7 +89,18 @@ public class TerrainGen : MonoBehaviour
                 GenerateTile(terrainCache[i, j], tileWidth * j, tileDepth * i, tileWidth, tileDepth);
             }
         }
+
+        for (int i = 0; i < tileCount; i++)
+        {
+            for (int j = 0; j < tileCount; j++)
+            {
+                meshColliders[i, j].sharedMesh = meshCache[i, j];
+            }
+        }
+
+        transform.localPosition = new Vector3(-tileCount * scale / 2, 0, -tileCount * scale / 2);
     }
+
 
     Mesh GenerateMesh(float scale, int resolution)
     {

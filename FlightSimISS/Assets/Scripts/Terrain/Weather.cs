@@ -23,6 +23,13 @@ public class Weather : MonoBehaviour
         volumeProfile.TryGet<HDRISky>(out var sky);
         sky.hdriSky.SetValue(skyDay);
 
+        volumeProfile.TryGet<VolumetricClouds>(out var clouds);
+        clouds.active = true;
+
+        volumeProfile.TryGet<Fog>(out var fog);
+        fog.active = false;
+        fog.meanFreePath.SetValue(new FloatParameter(300f));
+
         setDay();
     }
 
@@ -60,5 +67,17 @@ public class Weather : MonoBehaviour
         sky.hdriSky.SetValue(skyNight);
         sky.exposure.SetValue(new FloatParameter(3f));
         lightSource.intensity = 0;
+    }
+
+    public void ToggleFog()
+    {
+        volumeProfile.TryGet<Fog>(out var fog);
+        fog.active = !fog.active;
+    }
+
+    public void ChangeFogDensity(Single fogDensity)
+    {
+        volumeProfile.TryGet<Fog>(out var fog);
+        fog.meanFreePath.SetValue(new FloatParameter(300f - fogDensity));
     }
 }
