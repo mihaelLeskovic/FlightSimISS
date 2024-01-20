@@ -46,7 +46,7 @@ public class RocketLauncher : MonoBehaviour
             {
                 LaunchRocketLinear();
             }
-
+            GameManager.rocketsLeft--;
             used = true;
             GetComponent<MeshRenderer>().enabled = false;
             if (next != null)
@@ -238,7 +238,9 @@ public class RocketLauncher : MonoBehaviour
 
         //targetRigidbody.AddForce((forceDirection) * 100000, ForceMode.Impulse);
         //targetRigidbody.AddExplosionForce(1000000f, rocketPosition, 0f);
+        targetRigidbody.velocity = -target.transform.forward * 80f;
         targetRigidbody.AddForceAtPosition(rocketForward * 20000f, rocketPosition, ForceMode.Impulse);
+        
         // ...
 
         // Destroy the smoke trail as it's no longer needed
@@ -249,6 +251,7 @@ public class RocketLauncher : MonoBehaviour
         if (target.transform.parent.parent != null)
         {
             target.transform.parent = target.transform.parent.parent;
+            target.GetComponent<EnemyMovement>().enabled = false;
         }
         else
         {

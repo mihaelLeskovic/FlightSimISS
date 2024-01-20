@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject rafale;
     float timer = 10f;
 
+    public static int rocketsLeft = 8;
+    bool rocketsUsed = false;
+
     bool gameEnded = false;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +37,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        var warningActive = Mathf.Abs(rafale.transform.position.x) > 1000f || Mathf.Abs(rafale.transform.position.z) > 1000f;
+        var warningActive = Mathf.Abs(rafale.transform.position.x) > 1150f || Mathf.Abs(rafale.transform.position.z) > 1150f;
         if (warningActive)
         {
             timer -= Time.deltaTime;
@@ -55,11 +58,22 @@ public class GameManager : MonoBehaviour
             timer = 10f;
             warningPanel.SetActive(false);
         }
+
+        if (!rocketsUsed && rocketsLeft <= 0)
+        {
+            StartCoroutine(startEndSequenceRockets());
+        }
     }
 
     IEnumerator startEndSequence()
     {
         yield return new WaitForSeconds(6);
+        endCanvas.SetActive(true);
+    }
+
+    IEnumerator startEndSequenceRockets()
+    {
+        yield return new WaitForSeconds(15);
         endCanvas.SetActive(true);
     }
 }

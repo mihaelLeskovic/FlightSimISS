@@ -31,6 +31,7 @@ public class ScenarioSetup : MonoBehaviour
     [SerializeField] GameObject playableMapObject;
     [SerializeField] GameObject jetPrefab;
     [SerializeField] GameObject bunkerPrefab;
+    [SerializeField] GameObject pista;
 
     int objectsPlaced = 0;
 
@@ -112,7 +113,7 @@ public class ScenarioSetup : MonoBehaviour
         scale = scale == 0 ? 1f : scale;
         terrainGen.Setup(10, 500, 250, 7 * (int)(intensity), 22 * (int)(scale));
         var rafale = Instantiate(rafalePrefab, levelContainer.transform);
-        rafale.transform.position = new Vector3(0, 50, 0);
+        rafale.transform.position = new Vector3(30, 53, 0);
 
         foreach (Transform child in playableMapObject.transform)
         {
@@ -122,7 +123,9 @@ public class ScenarioSetup : MonoBehaviour
                 var rectTransform = child.GetComponent<RectTransform>();
                 var position = rectTransform.localPosition * 10;
                 position.z = position.y;
-                position.y = 100f;
+
+                var random = UnityEngine.Random.Range(0, 200);
+                position.y = 300 + random;
                 if (child.gameObject.name == "EnemyBunker")
                 {
                     Instantiate(bunkerPrefab, position, Quaternion.identity, enemyContainer.transform);
