@@ -47,6 +47,7 @@ public class TerrainGen : MonoBehaviour
                 terrainCache[i, j] = new GameObject("TerrainTile");
                 terrainCache[i, j].transform.position = new Vector3(i * scale, 0, j * scale);
                 terrainCache[i, j].transform.parent = transform;
+                terrainCache[i, j].tag = "terrain";
                 var meshFilter = terrainCache[i, j].AddComponent<MeshFilter>();
                 meshColliders[i, j] = terrainCache[i, j].AddComponent<MeshCollider>();
                 var meshRenderer = terrainCache[i, j].AddComponent<MeshRenderer>();
