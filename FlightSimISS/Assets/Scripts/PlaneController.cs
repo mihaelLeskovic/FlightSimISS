@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 public class PlaneController : MonoBehaviour {
+    const float EPSILON = 1e-6f;
+    
     [Header("Plane stats")]
     [Tooltip("How much the throttle increases/decreases per update when pressed")]
     public float throttleIncrement = 0.1f;
@@ -22,7 +24,7 @@ public class PlaneController : MonoBehaviour {
 
     public float yawResponsiveness = 10f;
     
-    public float angularDamping = 1f; // Adjust the value as needed
+    // public float angularDamping = 1f; // Adjust the value as needed
     
     public float throttle = 0f;
 
@@ -33,7 +35,7 @@ public class PlaneController : MonoBehaviour {
     private float roll;
     private float pitch;
     private float yaw;
-
+    
     private Rigidbody rb;
 
     AudioSource engineSound;
@@ -55,7 +57,7 @@ public class PlaneController : MonoBehaviour {
         roll = Input.GetAxis("Roll");
         pitch = Input.GetAxis("Pitch");
         yaw = Input.GetAxis("Yaw");
-
+        
         if (Input.GetKey(KeyCode.Space)) throttle += throttleIncrement;
         if (Input.GetKey(KeyCode.LeftControl)) throttle -= throttleIncrement;
         throttle = Mathf.Clamp(throttle, 0f, 100f);
@@ -63,11 +65,11 @@ public class PlaneController : MonoBehaviour {
     }
 
     private void Update() {
-        HandleInputs();
         engineSound.volume = throttle * throttle * 0.00005f ;
     }
 
     private void FixedUpdate() {
+        HandleInputs();
         // throttle
         rb.AddForce(transform.forward * (maxThrust * throttle));
         
@@ -79,9 +81,9 @@ public class PlaneController : MonoBehaviour {
         rb.AddTorque(transform.up * (yaw * yawResponsiveness));
         rb.AddTorque(transform.right * (pitch * pitchResponsiveness));
         rb.AddTorque(-transform.forward * (roll * rollResponsiveness));
-        
-        // rb.angularVelocity *= (1f - Time.deltaTime * angularDamping);
-        
+
+        // if(!rotationKeyPressed()) rb.angularVelocity *= (1f - Time.deltaTime * angularDamping);
+
     }
 
     private void OnCollisionEnter(Collision collision)
