@@ -22,6 +22,8 @@ public class TerrainGen : MonoBehaviour
         public Texture2D texture;
     }
 
+    public Material material;
+
     [SerializeField] int tileCount;
     [SerializeField] float scale;
     [SerializeField] int resolution;
@@ -47,12 +49,15 @@ public class TerrainGen : MonoBehaviour
                 terrainCache[i, j] = new GameObject("TerrainTile");
                 terrainCache[i, j].transform.position = new Vector3(i * scale, 0, j * scale);
                 terrainCache[i, j].transform.parent = transform;
+                terrainCache[i, j].tag = "terrain";
                 var meshFilter = terrainCache[i, j].AddComponent<MeshFilter>();
                 meshColliders[i, j] = terrainCache[i, j].AddComponent<MeshCollider>();
                 var meshRenderer = terrainCache[i, j].AddComponent<MeshRenderer>();
                 meshFilter.mesh = GenerateMesh(scale, resolution);
                 meshCache[i, j] = meshFilter.mesh;
-                meshRenderer.material.shader = Shader.Find("Shader Graphs/TerrainShader");
+                var materialList = new List<Material>();
+                materialList.Add(material);
+                meshRenderer.SetMaterials(materialList);
                 //TODO setFloat TexTiling to shader
             }
         }
