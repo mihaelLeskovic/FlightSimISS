@@ -228,6 +228,7 @@ public class RocketLauncher : MonoBehaviour
         // Attach your custom smoke particle system to the target
         GameObject customSmoke = Instantiate(customSmokePrefab, target.transform.position, Quaternion.identity);
         customSmoke.transform.parent = target.transform; // Set the target as the parent to follow its position
+        customSmoke.transform.localScale = Vector3.one;
 
         // Add a Rigidbody component to enable falling
         Rigidbody targetRigidbody = target.GetComponent<Rigidbody>();
@@ -252,7 +253,14 @@ public class RocketLauncher : MonoBehaviour
         if (target.transform.parent.parent != null)
         {
             target.transform.parent = target.transform.parent.parent;
-            target.GetComponent<EnemyMovement>().enabled = false;
+            var isJet = target.TryGetComponent<EnemyMovement>(out var enemyMovement);
+            if (isJet) enemyMovement.enabled = false;
+            var isRapier = target.TryGetComponent<Bunker>(out var bunker);
+            if (isRapier)
+            {
+                bunker.enabled = false;
+                bunker.StopAllCoroutines();
+            }
         }
         else
         {

@@ -276,7 +276,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.03
-  far clip plane: 1000
+  far clip plane: 20000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -432,6 +432,134 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!1 &2796379128371465637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6533112524363157632}
+  - component: {fileID: 5510541897272453132}
+  m_Layer: 0
+  m_Name: BattleFieldSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6533112524363157632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2796379128371465637}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 539410875239563680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &5510541897272453132
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2796379128371465637}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b687931fbf4d7684fb2c6da41e12c6b8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.145
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3191998380304118205
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +626,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 20000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -811,7 +939,6 @@ MonoBehaviour:
   pitchResponsiveness: 5000
   rollResponsiveness: 1000
   yawResponsiveness: 5000
-  angularDamping: 1
   throttle: 0
   lift: 135
   velocity: 0
@@ -843,7 +970,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f41448f5cfc0919418d5453f3e5c82ed, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -993,7 +1120,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 20000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1215,7 +1342,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 20000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1444,6 +1571,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6723082814227382068}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6533112524363157632}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd0de71c18b5ec248a49051be2fb206c, type: 3}
       insertIndex: -1
@@ -1545,8 +1675,8 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
   speed: 100
   explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
-  explosionSound: {fileID: 0}
-  blastSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 38cc70de2aecaca4497b463b8a33429c, type: 3}
+  blastSound: {fileID: 8300000, guid: 18e517a187bee0c499ae1e2ac9922bd0, type: 3}
   customSmokePrefab: {fileID: 3621438122084986158, guid: 02cfbc8c2bd0b0642934985ca13d911e, type: 3}
 --- !u!65 &5047379536423976090
 BoxCollider:
@@ -1651,8 +1781,8 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
   speed: 100
   explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
-  explosionSound: {fileID: 0}
-  blastSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 38cc70de2aecaca4497b463b8a33429c, type: 3}
+  blastSound: {fileID: 8300000, guid: 18e517a187bee0c499ae1e2ac9922bd0, type: 3}
   customSmokePrefab: {fileID: 3621438122084986158, guid: 02cfbc8c2bd0b0642934985ca13d911e, type: 3}
 --- !u!65 &2056660514852222414
 BoxCollider:
@@ -1726,8 +1856,8 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
   speed: 100
   explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
-  explosionSound: {fileID: 0}
-  blastSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 38cc70de2aecaca4497b463b8a33429c, type: 3}
+  blastSound: {fileID: 8300000, guid: 18e517a187bee0c499ae1e2ac9922bd0, type: 3}
   customSmokePrefab: {fileID: 3621438122084986158, guid: 02cfbc8c2bd0b0642934985ca13d911e, type: 3}
 --- !u!65 &2356192132907807274
 BoxCollider:
@@ -1801,8 +1931,8 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
   speed: 100
   explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
-  explosionSound: {fileID: 0}
-  blastSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 38cc70de2aecaca4497b463b8a33429c, type: 3}
+  blastSound: {fileID: 8300000, guid: 18e517a187bee0c499ae1e2ac9922bd0, type: 3}
   customSmokePrefab: {fileID: 3621438122084986158, guid: 02cfbc8c2bd0b0642934985ca13d911e, type: 3}
 --- !u!65 &6538257248852744502
 BoxCollider:
@@ -1876,8 +2006,8 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
   speed: 100
   explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
-  explosionSound: {fileID: 0}
-  blastSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 38cc70de2aecaca4497b463b8a33429c, type: 3}
+  blastSound: {fileID: 8300000, guid: 18e517a187bee0c499ae1e2ac9922bd0, type: 3}
   customSmokePrefab: {fileID: 3621438122084986158, guid: 02cfbc8c2bd0b0642934985ca13d911e, type: 3}
 --- !u!65 &5315803557209316250
 BoxCollider:
@@ -1951,8 +2081,8 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
   speed: 100
   explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
-  explosionSound: {fileID: 0}
-  blastSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 38cc70de2aecaca4497b463b8a33429c, type: 3}
+  blastSound: {fileID: 8300000, guid: 18e517a187bee0c499ae1e2ac9922bd0, type: 3}
   customSmokePrefab: {fileID: 3621438122084986158, guid: 02cfbc8c2bd0b0642934985ca13d911e, type: 3}
 --- !u!65 &6225348651609171791
 BoxCollider:
@@ -2026,8 +2156,8 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
   speed: 100
   explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
-  explosionSound: {fileID: 0}
-  blastSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 38cc70de2aecaca4497b463b8a33429c, type: 3}
+  blastSound: {fileID: 8300000, guid: 18e517a187bee0c499ae1e2ac9922bd0, type: 3}
   customSmokePrefab: {fileID: 3621438122084986158, guid: 02cfbc8c2bd0b0642934985ca13d911e, type: 3}
 --- !u!65 &1868808645260242780
 BoxCollider:
@@ -2101,8 +2231,8 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 3621438122084986158, guid: 500dfa1fd15b7994086bd4791de36bf0, type: 3}
   speed: 100
   explosionPrefab: {fileID: 4306207833405504557, guid: 254f1f64e6fad1646919044cddee3afa, type: 3}
-  explosionSound: {fileID: 0}
-  blastSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 38cc70de2aecaca4497b463b8a33429c, type: 3}
+  blastSound: {fileID: 8300000, guid: 18e517a187bee0c499ae1e2ac9922bd0, type: 3}
   customSmokePrefab: {fileID: 3621438122084986158, guid: 02cfbc8c2bd0b0642934985ca13d911e, type: 3}
 --- !u!65 &9092590706298719453
 BoxCollider:

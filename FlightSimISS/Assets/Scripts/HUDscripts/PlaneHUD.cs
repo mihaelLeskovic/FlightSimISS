@@ -6,8 +6,8 @@ public class PlaneHUD : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Transform hudCenter;
-    [SerializeField] private Camera camera;
-    [SerializeField] private Transform planeTransform;
+    [SerializeField] public Camera camera;
+    [SerializeField] public Transform planeTransform;
 
     private GameObject hudCenterGO;
     
@@ -29,6 +29,7 @@ public class PlaneHUD : MonoBehaviour
         Vector3 rotation = camera.transform.localEulerAngles;
         Vector3 hudPos = WorldToHUDCoords(camera.transform.position + planeTransform.forward);
         hudPos.z = 0;
+        hudPos.y = 0;
         hudCenter.localPosition = hudPos;
         hudCenter.localEulerAngles = new Vector3(0, 0, -rotation.z);
     }

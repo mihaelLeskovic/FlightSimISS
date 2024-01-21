@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LatitudeScript : MonoBehaviour
 {
-    [SerializeField] private Transform planeTransform;
+    [SerializeField] public Transform planeTransform;
 
     private Text text;
     void Start() {

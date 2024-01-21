@@ -8,8 +8,8 @@ public class CompassScript : MonoBehaviour {
     [SerializeField] int smallColumnDistance;
     [SerializeField] private GameObject cardinalColumnPrefab;
     [SerializeField] private GameObject smallColumnPrefab;
-    [SerializeField] private Transform planeTransform;
-    [SerializeField] private Camera camera;
+    [SerializeField] public Transform planeTransform;
+    [SerializeField] public Camera camera;
     
     string[] directions = {
         "N",

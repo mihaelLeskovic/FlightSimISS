@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BoresightScript : MonoBehaviour {
-    [SerializeField] private Transform planeReference;
-    [SerializeField] private Transform cameraReference;
+    [SerializeField] public Transform planeReference;
+    [SerializeField] public Transform cameraReference;
     [SerializeField] private Transform hudCenter;
     [SerializeField] private Canvas canvas;
     

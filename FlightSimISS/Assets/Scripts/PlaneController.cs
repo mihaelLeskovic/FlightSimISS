@@ -65,7 +65,7 @@ public class PlaneController : MonoBehaviour {
     }
 
     private void Update() {
-        engineSound.volume = throttle * throttle * 0.00005f ;
+        engineSound.volume = throttle * throttle * 0.000025f ;
     }
 
     private void FixedUpdate() {
@@ -88,7 +88,7 @@ public class PlaneController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude > 20f)
+        if (collision.relativeVelocity.magnitude > 30f)
         {
             endGame();
         }

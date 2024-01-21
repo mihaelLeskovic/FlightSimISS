@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class PitchUI : MonoBehaviour {
     [SerializeField] private GameObject horizonIndicatorPrefab;
     [SerializeField] private GameObject regularBarPrefab;
-    [SerializeField] private Transform planeTransform;
-    [SerializeField] private Camera camera;
+    [SerializeField] public Transform planeTransform;
+    [SerializeField] public Camera camera;
     [SerializeField] private int barDistance;
     [SerializeField] private int max;
     [SerializeField] private int maxBarHeight;
