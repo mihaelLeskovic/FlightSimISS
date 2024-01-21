@@ -34,7 +34,7 @@ public class RocketLauncher : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Tab)) && !used)
+        if ((Input.GetKeyDown(KeyCode.Tab)) && !used)
         {
             // Find the closest target in the camera view
             used = true;
