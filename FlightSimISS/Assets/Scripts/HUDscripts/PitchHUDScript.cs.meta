@@ -3,7 +3,11 @@ guid: 6c68bcbb988bd50419dfb4090f59bc79
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - horizonIndicatorPrefab: {fileID: 2608334307147576173, guid: ff01be79b30214e4cae96d209915b5a7, type: 3}
+  - regularBarPrefab: {instanceID: 0}
+  - planeTransform: {instanceID: 0}
+  - camera: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
