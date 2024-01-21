@@ -1126,14 +1126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470f03a3294c7fa4f863979c6f51aeea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  povs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 0
-  index: 0
-  target: {x: 0, y: 0, z: 0}
 --- !u!81 &641683409
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1891,13 +1883,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.061628435, y: -0.70441604, z: 0.061628435, w: 0.70441604}
-  m_LocalPosition: {x: 8.81, y: 5.96, z: 0}
+  m_LocalRotation: {x: 0.010206889, y: -0.70703316, z: 0.010206854, w: 0.70703316}
+  m_LocalPosition: {x: 12.500168, y: 5.0899963, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1114284676}
-  m_LocalEulerAnglesHint: {x: 10, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.654, y: -90, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,14 +1902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470f03a3294c7fa4f863979c6f51aeea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  povs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 0
-  index: 0
-  target: {x: 0, y: 0, z: 0}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
