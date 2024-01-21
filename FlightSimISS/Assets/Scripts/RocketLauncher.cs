@@ -34,9 +34,11 @@ public class RocketLauncher : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Tab) && !used)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Tab)) && !used)
         {
             // Find the closest target in the camera view
+            used = true;
+
             GameObject closestTarget = GetClosestTargetInCameraView();
             if (closestTarget != null)
             {
@@ -47,7 +49,6 @@ public class RocketLauncher : MonoBehaviour
                 LaunchRocketLinear();
             }
             GameManager.rocketsLeft--;
-            used = true;
             GetComponent<MeshRenderer>().enabled = false;
             if (next != null)
                 next.enabled = true;

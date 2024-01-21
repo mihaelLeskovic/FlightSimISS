@@ -38,6 +38,8 @@ public class PlaneController : MonoBehaviour {
 
     AudioSource engineSound;
 
+    [NonSerialized] public GameObject endCanvas;
+
     private float responseModifier {
         get {
             return (rb.mass / 10f) * responsiveness;
@@ -80,5 +82,19 @@ public class PlaneController : MonoBehaviour {
         
         // rb.angularVelocity *= (1f - Time.deltaTime * angularDamping);
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.relativeVelocity.magnitude > 20f)
+        {
+            endGame();
+        }
+    }
+
+    public void endGame()
+    {
+        Time.timeScale = 0f;
+        endCanvas.SetActive(true);
     }
 }

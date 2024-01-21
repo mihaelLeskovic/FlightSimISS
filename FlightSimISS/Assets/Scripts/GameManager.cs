@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -69,11 +70,24 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         endCanvas.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     IEnumerator startEndSequenceRockets()
     {
         yield return new WaitForSeconds(15);
         endCanvas.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void AppQuit()
+    {
+        Application.Quit();
+    }
+
+    public void ReloadScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
